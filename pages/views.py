@@ -6,5 +6,5 @@ from django.http import HttpResponse
 
 
 def homePageView(reques):
-    return HttpResponse("Hello World I've done some edits!!")
+    return HttpResponse("Hello World I try to test branch ! ! !! ")
  
