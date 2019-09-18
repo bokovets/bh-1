@@ -25,7 +25,7 @@ SECRET_KEY = '2gps$w-r)ri_b+g@k=bzktbs+$u4gk-8wt%3rh3bdldwheo!z%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
