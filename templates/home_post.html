@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+    
+
+
+{% block content%}
+<h1>Message bord home page! </h1>
+    <u1> 
+        {% for post in all_post_list %}
+        <li>{{post}}</li>
+        {% endfor %}
+    </u1>
+
+
+{% endblock content %}
