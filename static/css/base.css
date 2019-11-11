@@ -9,19 +9,18 @@ header
     margin-bottom: 2rem;   
     display: flex; 
 }
-header h1 a  
-{    
-    color: red;    
-    text-decoration: none; 
-}
+
 .nav-left  
 {    
     margin-right: auto; 
+
 }
-.nav-right  
+.nav-right
 {    
-    display: flex;    
-    padding-top: 2rem; 
+    color: green;
+    margin-top: 50px; 
+   
+    
 }
 .post-entry  
 {    
@@ -45,4 +44,18 @@ header h1 a
 .post-entry h2 a:hover  
 {    
     color: red; 
+}
+
+a .login-l
+{
+    color: green;
+    font-size: 10px;
+}
+
+#dj {
+    color: blueviolet ;
+}
+
+#sg {
+    color: blueviolet;
 }
