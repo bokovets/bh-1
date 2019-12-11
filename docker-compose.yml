@@ -17,9 +17,24 @@ services:
     web: 
         build: .
         container_name: app_bh
-        command: bash -c "pipenv run python3 manage.py migrate && pipenv run python3 manage.py runserver 0.0.0.0:8000"
+        command: bash -c "pipenv run python3 manage.py collectstatic --no-input && pipenv run python3 manage.py migrate && pipenv run python3 manage.py runserver 0.0.0.0:8000"
+        volumes: 
+          - ./static:/code/static
         ports:
           - 8000:8000
         restart: always
         depends_on:
            - db
+           
+    nginx: 
+       image: nginx 
+       container_name: nginx_bh
+       volumes: 
+          - ./static:/code/static
+          - ./default.conf:/etc/nginx/conf.d/default.conf
+       ports:
+          - 8080:8080
+       restart: always
+       depends_on:
+           - web
+       
