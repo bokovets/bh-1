@@ -1,0 +1,43 @@
+#!groovy
+// Run docker build
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        label 'master'
+        }
+    triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("docker(nexus) login") {
+            steps {
+                echo " ============== nexus login =================="
+                withCredentials([usernamePassword(credentialsId: 'nexus_registry', usernameVariable: 'USERNAME_NEXUS', passwordVariable: 'PASSWORD_NEXUS')]) {
+                    sh """
+                    docker login nexus-test.effective-soft.com:11111 -u $USERNAME_NEXUS -p $PASSWORD_NEXUS 
+                    """
+                }
+            }
+        }
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('docker/toolbox') {
+                	sh 'docker build -t nexus-test.effective-soft.com:11111/bh-1:v.3 ./bh-1 '
+                }
+            }
+        }
+        stage("docker(nexus) push") {
+            steps {
+                echo " ============== start pushing image  on nexus=================="
+                sh '''
+                docker push nexus-test.effective-soft.com:11111/bh-1:v.3
+                '''
+            }
+        }
+        
+    }
+}
