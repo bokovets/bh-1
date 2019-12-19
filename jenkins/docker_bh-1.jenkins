@@ -26,7 +26,7 @@ pipeline {
             steps {
                 echo " ============== start building image =================="
                 dir ('docker/toolbox') {
-                	sh 'docker build -t nexus-test.effective-soft.com:11111/bh-1:v.3 ./bh-1 '
+                	sh 'docker build -t nexus-test.effective-soft.com:11111/bh-1:v.3 ./bh-1/ '
                 }
             }
         }
