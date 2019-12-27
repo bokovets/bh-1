@@ -15,7 +15,7 @@ pipeline {
         stage("docker(nexus) login") {
             steps {
                 echo " ============== nexus login =================="
-                withCredentials([usernamePassword(credentialsId: 'nexus_registry', usernameVariable: 'USERNAME_NEXUS', passwordVariable: 'PASSWORD_NEXUS')]) {
+                withCredentials([usernamePassword(credentialsId: 'docker_registry_nexus', usernameVariable: 'USERNAME_NEXUS', passwordVariable: 'PASSWORD_NEXUS')]) {
                     sh """
                     docker login nexus-test.effective-soft.com:11111 -u $USERNAME_NEXUS -p $PASSWORD_NEXUS 
                     """
