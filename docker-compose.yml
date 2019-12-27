@@ -26,7 +26,7 @@ services:
         restart: always
         depends_on:
            - db
-           
+            
     nginx: 
        image: nginx 
        container_name: nginx_bh
