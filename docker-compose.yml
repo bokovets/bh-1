@@ -15,8 +15,9 @@ services:
             MYSQL_ROOT_PASSWORD: 'root'
         restart: always
         
-    web: 
-        image: nexus-test.effective-soft.com:11111/bh-1:12
+    web:
+        build: ./bh-1/
+        # image: nexus-test.effective-soft.com:11111/bh-1:12
         container_name: app_bh
         command: bash -c "pipenv run python3 manage.py collectstatic --no-input && pipenv run python3 manage.py migrate && pipenv run python3 manage.py runserver 0.0.0.0:8000"
         volumes: 
