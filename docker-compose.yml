@@ -16,7 +16,7 @@ services:
         restart: always
         
     web:
-        image: nexus-test.effective-soft.com:11111/bh-1:14
+        image: nexus-test.effective-soft.com:11111/bh-1:15
         # build: ./bh-1/
         container_name: app_bh
         command: bash -c "pipenv run python3 manage.py collectstatic --no-input && pipenv run python3 manage.py migrate && pipenv run python3 manage.py runserver 0.0.0.0:8000"
